@@ -1,0 +1,3 @@
+node_modules/
+selfsigned.*
+.DS_Store

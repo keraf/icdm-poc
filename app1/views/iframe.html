@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Iframe</title>
+        <script>
+            const token = '<%= token %>';
+            window.addEventListener('message', (event) => {
+                const { type } = JSON.parse(event.data);
+
+                switch (type) {
+                    case 'getUserInfo':
+                        fetch('/api/getUserInfo', { credentials: 'include' })
+                            .then(resp => resp.json())
+                            .then(resp => {
+                                const data = JSON.stringify({
+                                    type: 'getUserInfo',
+                                    payload: resp,
+                                });
+                                event.source.postMessage(data, event.origin);
+                            });
+                        break;
+                }
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

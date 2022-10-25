@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Third party website</title>
+        <script>
+        </script>
+    </head>
+    <body>
+        <p>This should show the currently logged in user from the other app.</p>
+        <p>Logged in as: <span id="user"></span></p>
+        <iframe
+            id="iframe"
+            src="http://localhost:3000/iframe"
+            sandbox="allow-scripts"
+            style="position: absolute; width:0; height:0; border:0;">
+        </iframe>
+        <script>
+            iframe.addEventListener('load', () => {
+                iframe.contentWindow.postMessage(JSON.stringify({ type: 'getUserInfo' }), '*');
+
+                window.addEventListener('message', (event) => {
+                    const { type, payload } = JSON.parse(event.data);
+
+                    switch (type) {
+                        case 'getUserInfo':
+                            document.getElementById('user').innerText = payload.username;
+                            break;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
