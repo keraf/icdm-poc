@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:app1": "node app1/index.js",
-    "start:app2": "node app2/index.js",
-    "keygen": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out ./selfsigned.crt"
+    "start:app2": "node app2/index.js"
   },
   "author": "",
   "license": "ISC",

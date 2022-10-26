@@ -3,8 +3,9 @@
     <head>
         <title>Iframe</title>
         <script>
-            const token = '<%= token %>';
             window.addEventListener('message', (event) => {
+                // TODO: Check origin
+
                 const { type } = JSON.parse(event.data);
 
                 switch (type) {
