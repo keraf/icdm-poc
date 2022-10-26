@@ -48,8 +48,7 @@ app.get('/', (req, res) => {
 
 // Serve iframe
 app.get('/iframe', (req, res) => {
-    const { token } = req.cookies;
-    res.render('iframe', { token });
+    res.render('iframe');
 });
 
 // Serve login form
